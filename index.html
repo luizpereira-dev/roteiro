@@ -346,15 +346,20 @@ function setSt(state,txt){
 async function loadSheets(){
   showLd('Carregando roteiro...');
   try{
-    const r = await fetch(SCRIPT_URL+'?t='+Date.now());
-    const data = JSON.parse(await r.text());
+    const url = SCRIPT_URL+'?action=load&t='+Date.now();
+    const r = await fetch(url, {method:'GET', mode:'cors'});
+    const text = await r.text();
+    const data = JSON.parse(text);
     if(Array.isArray(data)&&data.length>0){
       boards=data;
       localStorage.setItem(LS_DATA,JSON.stringify(boards));
       setSt('saved','Sincronizado');
       hideLd(); return true;
     }
-  }catch(e){ setSt('error','Erro ao carregar') }
+  }catch(e){
+    console.error('loadSheets error:',e);
+    setSt('error','Erro ao carregar');
+  }
   hideLd(); return false;
 }
 
@@ -363,11 +368,20 @@ async function saveSheets(){
   document.getElementById('btn-save').disabled=true;
   localStorage.setItem(LS_DATA,JSON.stringify(boards));
   try{
-    const r = await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(boards)});
-    const j = await r.json();
-    if(j.ok){ setSt('saved','Salvo ✓'); setTimeout(()=>setSt('saved','Sincronizado'),2500); }
-    else throw new Error(j.error);
-  }catch(e){ setSt('error','Erro ao salvar'); }
+    // Envia via GET para evitar CORS preflight (POST bloqueado em alguns browsers/mobile)
+    const encoded = encodeURIComponent(JSON.stringify(boards));
+    const url = SCRIPT_URL+'?action=save&data='+encoded;
+    const r = await fetch(url, {method:'GET', mode:'cors'});
+    const text = await r.text();
+    const j = JSON.parse(text);
+    if(j.ok){
+      setSt('saved','Salvo ✓');
+      setTimeout(()=>setSt('saved','Sincronizado'),2500);
+    } else throw new Error(j.error||'Resposta inválida');
+  }catch(e){
+    console.error('saveSheets error:',e);
+    setSt('error','Erro ao salvar');
+  }
   document.getElementById('btn-save').disabled=false;
 }
 
