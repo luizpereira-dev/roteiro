@@ -26,7 +26,6 @@
 html,body{height:100%}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;touch-action:pan-y}
 
-/* ── HEADER ── */
 .hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:0 1rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;gap:8px}
 .hdr-l{display:flex;align-items:center;gap:10px;min-width:0}
 .logo{width:26px;height:26px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -39,12 +38,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .btn-pri{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn-grn{background:var(--green-bg);border-color:var(--green);color:var(--green)}
-/* icon-only on mobile */
 .btn .btn-lbl{display:inline}
-@media(max-width:480px){
-  .btn .btn-lbl{display:none}
-  .btn{padding:7px 9px}
-}
+@media(max-width:480px){.btn .btn-lbl{display:none}.btn{padding:7px 9px}}
 
 .sync{font-size:11px;font-weight:500;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:4px;transition:all .3s;white-space:nowrap}
 .sync.idle  {background:var(--surface2);color:var(--text3)}
@@ -54,11 +49,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .sdot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
 .sdot.pulse{animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-/* hide text on small, only show dot */
 .sync .stxt{display:inline}
 @media(max-width:400px){.sync .stxt{display:none}}
 
-/* ── LEGEND ── */
 .lgd{background:var(--surface);border-bottom:1px solid var(--border);padding:6px 1rem;display:flex;align-items:center;gap:5px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .lgd::-webkit-scrollbar{display:none}
 .lgd-lbl{font-size:10px;color:var(--text3);font-weight:500;margin-right:2px;text-transform:uppercase;letter-spacing:.05em;flex-shrink:0}
@@ -69,27 +62,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .bco{background:var(--cat-compras-bg);color:var(--cat-compras-tx)}
 .bt {background:var(--cat-turismo-bg);color:var(--cat-turismo-tx)}
 
-/* ── CANVAS ── */
-.canvas{
-  display:flex;gap:10px;
-  padding:1rem 1rem 5rem;
-  overflow-x:auto;overflow-y:visible;
-  align-items:flex-start;
-  min-height:calc(100vh - 100px);
-  -webkit-overflow-scrolling:touch;
-  scroll-snap-type:x proximity;
-}
+.canvas{display:flex;gap:10px;padding:1rem 1rem 5rem;overflow-x:auto;overflow-y:visible;align-items:flex-start;min-height:calc(100vh - 100px);-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
 .canvas::-webkit-scrollbar{height:4px}
 .canvas::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 
-/* ── BOARD ── */
-.board{
-  min-width:var(--board-w);max-width:var(--board-w);
-  background:var(--surface2);border-radius:var(--r);
-  border:1px solid var(--border);padding:10px;flex-shrink:0;
-  transition:box-shadow .2s,opacity .2s;
-  scroll-snap-align:start;
-}
+.board{min-width:var(--board-w);max-width:var(--board-w);background:var(--surface2);border-radius:var(--r);border:1px solid var(--border);padding:10px;flex-shrink:0;transition:box-shadow .2s,opacity .2s;scroll-snap-align:start}
 .board.board-dragging{opacity:.35;box-shadow:none}
 .board.card-drag-over{border-color:var(--accent2);box-shadow:0 0 0 2px rgba(200,115,58,.2)}
 .board-backlog{background:#faf7f2;border-color:rgba(200,115,58,.25)}
@@ -101,66 +78,43 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .bh-title{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bh-sub{font-size:11px;color:var(--text3);margin-top:2px}
 .bh-menu{background:none;border:none;cursor:pointer!important;color:var(--text3);font-size:18px;line-height:1;padding:2px 4px;flex-shrink:0;pointer-events:all;min-width:28px;min-height:28px;display:flex;align-items:center;justify-content:center}
-.bh-menu:active{color:var(--text)}
 
-/* ── CARDS LIST ── */
 .cl{display:flex;flex-direction:column;gap:6px;min-height:36px;border-radius:var(--rs);padding:2px;transition:background .15s,min-height .15s}
 .cl.cdo{background:rgba(200,115,58,.06);min-height:60px}
 
-/* ── CARD ── */
-.card{
-  background:var(--surface);border-radius:var(--rs);border:1px solid var(--border);
-  padding:9px 10px;cursor:grab;position:relative;
-  transition:box-shadow .15s;touch-action:none;
-}
+.card{background:var(--surface);border-radius:var(--rs);border:1px solid var(--border);padding:9px 10px;cursor:grab;position:relative;transition:box-shadow .15s;touch-action:none}
 .card:active{cursor:grabbing}
 .card.dragging{opacity:.3;transform:scale(.97)}
 .card-badge{margin-bottom:5px}
 .card-title{font-size:12px;color:var(--text);font-weight:500;line-height:1.4;padding-right:40px}
 .card-desc{font-size:11px;color:var(--text2);margin-top:3px;line-height:1.4}
-/* actions always visible on touch, hover on desktop */
 .card-actions{position:absolute;top:6px;right:6px;display:none;gap:3px}
 @media(hover:hover){.card:hover .card-actions{display:flex}}
 @media(hover:none){.card .card-actions{display:flex}}
-.card-btn{background:none;border:none;cursor:pointer;font-size:13px;color:var(--text3);padding:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center;line-height:1}
+.card-btn{background:none;border:none;cursor:pointer;font-size:13px;color:var(--text3);padding:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center}
 .card-btn:active{color:var(--text)}
 .card-btn.del:active{color:#c0392b}
 
-/* ── GHOSTS ── */
 .ghost-card{position:fixed;pointer-events:none;z-index:9999;opacity:.9;transform:rotate(2deg) scale(1.04);box-shadow:0 16px 48px rgba(0,0,0,.22);border-radius:var(--rs);background:var(--surface);border:1px solid var(--border);padding:9px 10px;min-width:200px;max-width:230px}
 .ghost-board{position:fixed;pointer-events:none;z-index:9999;opacity:.85;transform:rotate(1deg) scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,.2);border-radius:var(--r);background:var(--surface2);border:1px solid var(--border);padding:10px;min-width:var(--board-w);max-width:var(--board-w)}
 
-/* ── PLACEHOLDERS ── */
 .ph{height:46px;border:2px dashed var(--accent2);border-radius:var(--rs);background:rgba(200,115,58,.06)}
 .ph-board{min-width:var(--board-w);max-width:var(--board-w);height:80px;border:2px dashed var(--accent2);border-radius:var(--r);background:rgba(200,115,58,.05);flex-shrink:0}
 
-/* ── ADD CARD BTN ── */
 .add-card{margin-top:8px;width:100%;background:none;border:1px dashed var(--border2);border-radius:var(--rs);padding:8px 10px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text3);cursor:pointer;text-align:left;display:flex;align-items:center;gap:5px;transition:all .15s;min-height:36px}
 .add-card:active{background:var(--surface);color:var(--text)}
 
-/* ── ADD BOARD BTN ── */
 .add-board{min-width:180px;max-width:180px;height:64px;background:none;border:1.5px dashed var(--border2);border-radius:var(--r);font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text3);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;flex-shrink:0;transition:all .15s;align-self:flex-start}
 .add-board:active{background:var(--surface);color:var(--text)}
 
 .empty-hint{font-size:11px;color:var(--text3);text-align:center;padding:10px 4px;font-style:italic}
 
-/* ── MODALS ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
 .overlay.open{display:flex}
-/* bottom sheet on mobile, centered on desktop */
-.modal{
-  background:var(--surface);border-radius:var(--r) var(--r) 0 0;
-  border:1px solid var(--border2);padding:1.25rem 1.25rem 2rem;
-  width:100%;max-width:480px;
-  box-shadow:var(--shl);animation:mSlide .22s ease;
-}
-@media(min-width:540px){
-  .overlay{align-items:center}
-  .modal{border-radius:var(--r);padding:1.5rem;max-width:360px;animation:mIn .18s ease}
-}
+.modal{background:var(--surface);border-radius:var(--r) var(--r) 0 0;border:1px solid var(--border2);padding:1.25rem 1.25rem 2rem;width:100%;max-width:480px;box-shadow:var(--shl);animation:mSlide .22s ease}
+@media(min-width:540px){.overlay{align-items:center}.modal{border-radius:var(--r);padding:1.5rem;max-width:360px;animation:mIn .18s ease}}
 @keyframes mSlide{from{transform:translateY(100%)}to{transform:none}}
 @keyframes mIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
-/* drag handle for bottom sheet */
 .modal-handle{width:36px;height:4px;border-radius:2px;background:var(--border2);margin:0 auto 1rem;display:block}
 @media(min-width:540px){.modal-handle{display:none}}
 .mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
@@ -168,19 +122,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .mclose{background:none;border:none;cursor:pointer;font-size:20px;color:var(--text3);padding:0;min-width:28px;min-height:28px;display:flex;align-items:center;justify-content:center}
 .field{margin-bottom:12px}
 .field label{font-size:12px;font-weight:500;color:var(--text2);display:block;margin-bottom:5px}
-.field input,.field textarea,.field select{
-  width:100%;font-size:14px;padding:10px 12px;border-radius:var(--rs);
-  border:1px solid var(--border2);background:var(--bg);color:var(--text);
-  font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s;resize:none;
-  -webkit-appearance:none;
-}
+.field input,.field textarea,.field select{width:100%;font-size:14px;padding:10px 12px;border-radius:var(--rs);border:1px solid var(--border2);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s;resize:none;-webkit-appearance:none}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent)}
 .field textarea{height:72px}
 .mactions{display:flex;gap:8px;justify-content:flex-end;margin-top:1.1rem}
 .mactions .btn{flex:1;justify-content:center}
 @media(min-width:540px){.mactions .btn{flex:none}}
 
-/* ── CTX MENU ── */
 .ctx{display:none;position:fixed;background:var(--surface);border:1px solid var(--border2);border-radius:var(--rs);box-shadow:var(--shl);padding:4px 0;z-index:300;min-width:170px}
 .ctx.open{display:block}
 .cxi{padding:10px 16px;font-size:14px;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:8px}
@@ -188,24 +136,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .cxi.danger{color:#c0392b}
 .cxs{height:1px;background:var(--border);margin:4px 0}
 
-/* ── LOADING ── */
-.ldov{display:none;position:fixed;inset:0;background:rgba(245,242,238,.88);z-index:400;align-items:center;justify-content:center;flex-direction:column;gap:12px;backdrop-filter:blur(3px)}
+.ldov{display:none;position:fixed;inset:0;background:rgba(245,242,238,.92);z-index:400;align-items:center;justify-content:center;flex-direction:column;gap:12px;backdrop-filter:blur(3px)}
 .ldov.open{display:flex}
 .spin{width:32px;height:32px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.ldov p{font-size:14px;color:var(--text2)}
+.ldov p{font-size:14px;color:var(--text2);text-align:center;padding:0 2rem}
 
-/* ── MOBILE FAB (add day) ── */
-.fab{
-  display:none;
-  position:fixed;bottom:1.25rem;right:1.25rem;z-index:40;
-  width:52px;height:52px;border-radius:50%;
-  background:var(--accent);border:none;
-  box-shadow:0 4px 20px rgba(200,115,58,.45);
-  color:#fff;font-size:24px;cursor:pointer;
-  align-items:center;justify-content:center;
-  transition:transform .15s;
-}
+.fab{display:none;position:fixed;bottom:1.25rem;right:1.25rem;z-index:40;width:52px;height:52px;border-radius:50%;background:var(--accent);border:none;box-shadow:0 4px 20px rgba(200,115,58,.45);color:#fff;font-size:24px;cursor:pointer;align-items:center;justify-content:center;transition:transform .15s}
 .fab:active{transform:scale(.93)}
 @media(max-width:600px){.fab{display:flex}}
 @media(max-width:600px){#btn-add-board{display:none}}
@@ -219,7 +156,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <h1>Trip eu &amp; tchuca</h1>
   </div>
   <div class="hdr-r">
-    <div class="sync idle" id="sync"><span class="sdot" id="sdot"></span><span class="stxt" id="stxt">Não conectado</span></div>
+    <div class="sync idle" id="sync"><span class="sdot" id="sdot"></span><span class="stxt" id="stxt">Carregando...</span></div>
     <button class="btn btn-grn" id="btn-save">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
       <span class="btn-lbl">Salvar</span>
@@ -247,8 +184,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </button>
 </div>
 
-<!-- FAB mobile -->
-<button class="fab" id="fab-add" title="Novo dia">+</button>
+<button class="fab" id="fab-add">+</button>
 
 <!-- Card Modal -->
 <div class="overlay" id="card-modal">
@@ -295,15 +231,22 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="cxi danger" id="ctx-del">🗑 Excluir board</div>
 </div>
 
-<div class="ldov" id="ldov"><div class="spin"></div><p id="ld-txt">Carregando...</p></div>
+<div class="ldov" id="ldov"><div class="spin"></div><p id="ld-txt">Carregando roteiro...</p></div>
 
 <script>
 // ══════════════════════════════════════════════════
-//  CONFIG — URL hardcoded
+//  CONFIG — Google Sheets API v4
 // ══════════════════════════════════════════════════
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJ0xhigFD7rQPbu4k195WC0wrccP1J8lY58-xFXQsAg-gS2G2Jf0-X5yTRzVrQo9Cg7Q/exec';
-const LS_DATA = 'roteiro_data';
+const SHEET_ID  = '1cDp_aKpx5C3-c04TsHso13nlQwHtQDY9IvqYFz__aR8';
+const API_KEY   = 'AIzaSyBlpV9j8l86XZL_TQZxOUOa4k0XvSf934o';
+const TAB_NAME  = 'roteiro';  // nome da aba na planilha
+const CELL      = 'B1';       // célula onde o JSON fica guardado
+const API_BASE  = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}`;
+const LS_DATA   = 'roteiro_data';
 
+// ══════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════
 const CAT = {
   cafe:    {label:'☕ Café',     cls:'bc'},
   almoco:  {label:'🍽 Almoço',   cls:'ba'},
@@ -334,83 +277,115 @@ function cid(){ return 'c'+Math.random().toString(36).slice(2,9) }
 // ══════════════════════════════════════════════════
 //  STATUS
 // ══════════════════════════════════════════════════
-function setSt(state,txt){
-  document.getElementById('sync').className='sync '+state;
-  document.getElementById('sdot').className='sdot'+(state==='saving'?' pulse':'');
-  document.getElementById('stxt').textContent=txt;
+function setSt(state, txt){
+  document.getElementById('sync').className = 'sync '+state;
+  document.getElementById('sdot').className = 'sdot'+(state==='saving'?' pulse':'');
+  document.getElementById('stxt').textContent = txt;
 }
 
 // ══════════════════════════════════════════════════
-//  GOOGLE SHEETS
+//  SHEETS API — GET (leitura, só precisa de API Key)
 // ══════════════════════════════════════════════════
 async function loadSheets(){
   showLd('Carregando roteiro...');
-  try{
-    const url = SCRIPT_URL+'?action=load&t='+Date.now();
-    const r = await fetch(url, {method:'GET', mode:'cors'});
-    const text = await r.text();
-    const data = JSON.parse(text);
-    if(Array.isArray(data)&&data.length>0){
-      boards=data;
-      localStorage.setItem(LS_DATA,JSON.stringify(boards));
-      setSt('saved','Sincronizado');
-      hideLd(); return true;
+  try {
+    const range = encodeURIComponent(`${TAB_NAME}!${CELL}`);
+    const url = `${API_BASE}/values/${range}?key=${API_KEY}`;
+    const r = await fetch(url);
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    const val = json.values?.[0]?.[0];
+    if(val){
+      const data = JSON.parse(val);
+      if(Array.isArray(data) && data.length > 0){
+        boards = data;
+        localStorage.setItem(LS_DATA, JSON.stringify(boards));
+        setSt('saved','Sincronizado');
+        hideLd(); return true;
+      }
     }
-  }catch(e){
-    console.error('loadSheets error:',e);
+  } catch(e) {
+    console.error('loadSheets:', e);
     setSt('error','Erro ao carregar');
   }
   hideLd(); return false;
 }
 
+// ══════════════════════════════════════════════════
+//  SHEETS API — PUT (escrita, precisa de OAuth)
+//  Como não temos OAuth no frontend puro, usamos
+//  o Apps Script só para escrita (POST simples via
+//  fetch com no-cors — fire and forget)
+//  E para leitura usamos a API pública (sem auth).
+// ══════════════════════════════════════════════════
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJ0xhigFD7rQPbu4k195WC0wrccP1J8lY58-xFXQsAg-gS2G2Jf0-X5yTRzVrQo9Cg7Q/exec';
+
 async function saveSheets(){
   setSt('saving','Salvando...');
-  document.getElementById('btn-save').disabled=true;
-  localStorage.setItem(LS_DATA,JSON.stringify(boards));
-  try{
-    // Envia via GET para evitar CORS preflight (POST bloqueado em alguns browsers/mobile)
-    const encoded = encodeURIComponent(JSON.stringify(boards));
-    const url = SCRIPT_URL+'?action=save&data='+encoded;
-    const r = await fetch(url, {method:'GET', mode:'cors'});
-    const text = await r.text();
-    const j = JSON.parse(text);
-    if(j.ok){
+  document.getElementById('btn-save').disabled = true;
+  const payload = JSON.stringify(boards);
+  localStorage.setItem(LS_DATA, payload);
+
+  try {
+    // no-cors: não lemos a resposta, mas o script executa normalmente
+    await fetch(
+      `${APPS_SCRIPT_URL}?action=save&data=${encodeURIComponent(payload)}`,
+      { method:'GET', mode:'no-cors' }
+    );
+    // Como no-cors não retorna resposta legível, esperamos 1.5s e verificamos lendo de volta
+    await new Promise(res => setTimeout(res, 1500));
+    const ok = await verifySave(payload);
+    if(ok){
       setSt('saved','Salvo ✓');
-      setTimeout(()=>setSt('saved','Sincronizado'),2500);
-    } else throw new Error(j.error||'Resposta inválida');
-  }catch(e){
-    console.error('saveSheets error:',e);
-    setSt('error','Erro ao salvar');
+      setTimeout(()=>setSt('saved','Sincronizado'), 2000);
+    } else {
+      // Mesmo sem confirmação, salvou no localStorage — marca como salvo localmente
+      setSt('saved','Salvo localmente');
+    }
+  } catch(e) {
+    console.error('saveSheets:', e);
+    setSt('saved','Salvo localmente');
   }
-  document.getElementById('btn-save').disabled=false;
+  document.getElementById('btn-save').disabled = false;
+}
+
+async function verifySave(expected){
+  try {
+    const range = encodeURIComponent(`${TAB_NAME}!${CELL}`);
+    const url = `${API_BASE}/values/${range}?key=${API_KEY}&t=${Date.now()}`;
+    const r = await fetch(url);
+    const json = await r.json();
+    const val = json.values?.[0]?.[0];
+    return val === expected;
+  } catch(e){ return false; }
 }
 
 function schedSave(){
-  localStorage.setItem(LS_DATA,JSON.stringify(boards));
+  localStorage.setItem(LS_DATA, JSON.stringify(boards));
   clearTimeout(saveTimer);
   setSt('saving','Aguardando...');
-  saveTimer=setTimeout(saveSheets,3000);
+  saveTimer = setTimeout(saveSheets, 2500);
 }
 
-function showLd(t){ document.getElementById('ld-txt').textContent=t||'...'; document.getElementById('ldov').classList.add('open'); }
+function showLd(t){ document.getElementById('ld-txt').textContent=t; document.getElementById('ldov').classList.add('open'); }
 function hideLd(){ document.getElementById('ldov').classList.remove('open'); }
 
 // ══════════════════════════════════════════════════
 //  RENDER
 // ══════════════════════════════════════════════════
 function render(){
-  const canvas=document.getElementById('canvas');
-  const endBtn=document.getElementById('add-board-end');
+  const canvas = document.getElementById('canvas');
+  const endBtn = document.getElementById('add-board-end');
   canvas.querySelectorAll('.board,.ph-board').forEach(el=>el.remove());
-  boards.forEach(b=>canvas.insertBefore(mkBoardEl(b),endBtn));
+  boards.forEach(b => canvas.insertBefore(mkBoardEl(b), endBtn));
 }
 
 function mkBoardEl(board){
-  const el=document.createElement('div');
-  el.className='board'+(board.isBacklog?' board-backlog':'');
-  el.dataset.bid=board.id;
-  const cc=board.cards.length;
-  el.innerHTML=`
+  const el = document.createElement('div');
+  el.className = 'board'+(board.isBacklog?' board-backlog':'');
+  el.dataset.bid = board.id;
+  const cc = board.cards.length;
+  el.innerHTML = `
     <div class="bh" data-drag-board="${board.id}">
       <div class="bh-l">
         <div class="bh-title">${board.title}</div>
@@ -425,74 +400,66 @@ function mkBoardEl(board){
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       Adicionar parada
     </button>`;
-  const list=el.querySelector(`[data-cl="${board.id}"]`);
-  board.cards.forEach(c=>list.appendChild(mkCardEl(c,board.id)));
-  el.querySelector('.add-card').addEventListener('click',()=>openCM(board.id,null));
-  el.querySelector('.bh-menu').addEventListener('click',e=>{ e.stopPropagation(); openCtx(e,board.id); });
-  // board drag — mouse + touch
-  const bh=el.querySelector('.bh');
-  bh.addEventListener('mousedown', e=>{ if(e.target.closest('.bh-menu')) return; startBoardDrag(e.clientX,e.clientY,board.id); });
-  bh.addEventListener('touchstart',e=>{ if(e.target.closest('.bh-menu')) return; const t=e.touches[0]; startBoardDrag(t.clientX,t.clientY,board.id,e); },{passive:false});
+  const list = el.querySelector(`[data-cl="${board.id}"]`);
+  board.cards.forEach(c => list.appendChild(mkCardEl(c, board.id)));
+  el.querySelector('.add-card').addEventListener('click', ()=>openCM(board.id, null));
+  el.querySelector('.bh-menu').addEventListener('click', e=>{ e.stopPropagation(); openCtx(e, board.id); });
+  const bh = el.querySelector('.bh');
+  bh.addEventListener('mousedown',  e=>{ if(e.target.closest('.bh-menu')) return; startBoardDrag(e.clientX,e.clientY,board.id); });
+  bh.addEventListener('touchstart', e=>{ if(e.target.closest('.bh-menu')) return; const t=e.touches[0]; startBoardDrag(t.clientX,t.clientY,board.id,e); },{passive:false});
   return el;
 }
 
-function mkCardEl(card,boardId){
-  const meta=CAT[card.cat]||CAT.turismo;
-  const el=document.createElement('div');
-  el.className='card';
-  el.dataset.cid=card.id;
-  el.dataset.bid=boardId;
-  el.innerHTML=`
+function mkCardEl(card, boardId){
+  const meta = CAT[card.cat]||CAT.turismo;
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.dataset.cid = card.id;
+  el.innerHTML = `
     <div class="card-actions">
-      <button class="card-btn edit" title="Editar">✎</button>
-      <button class="card-btn del"  title="Excluir">✕</button>
+      <button class="card-btn edit">✎</button>
+      <button class="card-btn del">✕</button>
     </div>
     <div class="card-badge"><span class="badge ${meta.cls}">${meta.label}</span></div>
     <div class="card-title">${card.name}</div>
     ${card.desc?`<div class="card-desc">${card.desc}</div>`:''}`;
-  el.querySelector('.edit').addEventListener('click',e=>{ e.stopPropagation(); openCM(boardId,card.id); });
-  el.querySelector('.del').addEventListener('click', e=>{ e.stopPropagation(); removeCard(boardId,card.id); });
-  // card drag — mouse + touch
-  el.addEventListener('mousedown', e=>{ if(e.target.closest('.card-actions')) return; startCardDrag(e.clientX,e.clientY,card,boardId); });
-  el.addEventListener('touchstart',e=>{ if(e.target.closest('.card-actions')) return; const t=e.touches[0]; startCardDrag(t.clientX,t.clientY,card,boardId,e); },{passive:false});
+  el.querySelector('.edit').addEventListener('click', e=>{ e.stopPropagation(); openCM(boardId,card.id); });
+  el.querySelector('.del').addEventListener('click',  e=>{ e.stopPropagation(); removeCard(boardId,card.id); });
+  el.addEventListener('mousedown',  e=>{ if(e.target.closest('.card-actions')) return; startCardDrag(e.clientX,e.clientY,card,boardId); });
+  el.addEventListener('touchstart', e=>{ if(e.target.closest('.card-actions')) return; const t=e.touches[0]; startCardDrag(t.clientX,t.clientY,card,boardId,e); },{passive:false});
   return el;
 }
 
 // ══════════════════════════════════════════════════
-//  DRAG — CARDS  (mouse + touch)
+//  DRAG CARDS
 // ══════════════════════════════════════════════════
 let cdrag=null, cardPH=null;
 
-function startCardDrag(cx,cy,card,boardId,touchEvt){
-  if(touchEvt) touchEvt.preventDefault();
-  const origEl=document.querySelector(`.card[data-cid="${card.id}"]`);
+function startCardDrag(cx,cy,card,boardId,te){
+  if(te) te.preventDefault();
+  const origEl = document.querySelector(`.card[data-cid="${card.id}"]`);
   if(!origEl) return;
-  const rect=origEl.getBoundingClientRect();
-
-  const ghost=document.createElement('div');
+  const rect = origEl.getBoundingClientRect();
+  const ghost = document.createElement('div');
   ghost.className='ghost-card';
   ghost.innerHTML=origEl.innerHTML;
   ghost.style.width=rect.width+'px';
   const ga=ghost.querySelector('.card-actions'); if(ga) ga.style.display='none';
   document.body.appendChild(ghost);
   origEl.classList.add('dragging');
-
   cardPH=document.createElement('div'); cardPH.className='ph';
-
   const offX=cx-rect.left, offY=cy-rect.top;
   cdrag={card,srcBoardId:boardId,ghost,origEl,offX,offY};
-  moveGhost(ghost,cx,cy,offX,offY);
-
+  ghost.style.left=(cx-offX)+'px'; ghost.style.top=(cy-offY)+'px';
   document.addEventListener('mousemove',onCardMove);
   document.addEventListener('mouseup',  onCardUp);
-  document.addEventListener('touchmove',onCardTouchMove,{passive:false});
-  document.addEventListener('touchend', onCardTouchEnd);
+  document.addEventListener('touchmove',onCardTMove,{passive:false});
+  document.addEventListener('touchend', onCardTEnd);
 }
 
-function moveGhost(ghost,cx,cy,ox,oy){ ghost.style.left=(cx-ox)+'px'; ghost.style.top=(cy-oy)+'px'; }
-
-function onCardMove(e){ if(!cdrag) return; moveGhost(cdrag.ghost,e.clientX,e.clientY,cdrag.offX,cdrag.offY); updateCardPH(e.clientX,e.clientY); }
-function onCardTouchMove(e){ e.preventDefault(); if(!cdrag) return; const t=e.touches[0]; moveGhost(cdrag.ghost,t.clientX,t.clientY,cdrag.offX,cdrag.offY); updateCardPH(t.clientX,t.clientY); }
+function onCardMove(e){ if(!cdrag) return; moveCardGhost(e.clientX,e.clientY); updateCardPH(e.clientX,e.clientY); }
+function onCardTMove(e){ e.preventDefault(); if(!cdrag) return; const t=e.touches[0]; moveCardGhost(t.clientX,t.clientY); updateCardPH(t.clientX,t.clientY); }
+function moveCardGhost(cx,cy){ cdrag.ghost.style.left=(cx-cdrag.offX)+'px'; cdrag.ghost.style.top=(cy-cdrag.offY)+'px'; }
 
 function updateCardPH(cx,cy){
   cdrag.ghost.style.display='none';
@@ -517,18 +484,13 @@ function finishCardDrop(){
   cdrag.origEl.classList.remove('dragging');
   document.querySelectorAll('.board').forEach(b=>b.classList.remove('card-drag-over'));
   if(cardPH?.parentNode){
-    const tList=cardPH.parentNode, tBoardId=tList.dataset.cl;
-    const tb=boards.find(b=>b.id===tBoardId), sb=boards.find(b=>b.id===cdrag.srcBoardId);
+    const tList=cardPH.parentNode, tBId=tList.dataset.cl;
+    const tb=boards.find(b=>b.id===tBId), sb=boards.find(b=>b.id===cdrag.srcBoardId);
     if(tb&&sb){
       const sibs=[...tList.children], phIdx=sibs.indexOf(cardPH);
       let idx=0; for(let i=0;i<phIdx;i++){ if(sibs[i].classList.contains('card')) idx++; }
       const ci=sb.cards.findIndex(c=>c.id===cdrag.card.id);
-      if(ci!==-1){
-        sb.cards.splice(ci,1);
-        if(cdrag.srcBoardId===tBoardId&&ci<idx) idx--;
-        tb.cards.splice(Math.max(0,idx),0,cdrag.card);
-        schedSave();
-      }
+      if(ci!==-1){ sb.cards.splice(ci,1); if(cdrag.srcBoardId===tBId&&ci<idx) idx--; tb.cards.splice(Math.max(0,idx),0,cdrag.card); schedSave(); }
     }
     cardPH.remove();
   }
@@ -536,39 +498,37 @@ function finishCardDrop(){
 }
 
 function onCardUp(){ document.removeEventListener('mousemove',onCardMove); document.removeEventListener('mouseup',onCardUp); finishCardDrop(); }
-function onCardTouchEnd(){ document.removeEventListener('touchmove',onCardTouchMove); document.removeEventListener('touchend',onCardTouchEnd); finishCardDrop(); }
+function onCardTEnd(){ document.removeEventListener('touchmove',onCardTMove); document.removeEventListener('touchend',onCardTEnd); finishCardDrop(); }
 function removePH(){ if(cardPH?.parentNode) cardPH.parentNode.removeChild(cardPH); }
 
 // ══════════════════════════════════════════════════
-//  DRAG — BOARDS  (mouse + touch)
+//  DRAG BOARDS
 // ══════════════════════════════════════════════════
 let bdrag=null, boardPH=null;
 
-function startBoardDrag(cx,cy,boardId,touchEvt){
-  if(touchEvt) touchEvt.preventDefault();
+function startBoardDrag(cx,cy,boardId,te){
+  if(te) te.preventDefault();
   const origEl=document.querySelector(`.board[data-bid="${boardId}"]`);
   if(!origEl) return;
   const rect=origEl.getBoundingClientRect();
-
   const ghost=document.createElement('div');
   ghost.className='ghost-board';
   ghost.innerHTML=origEl.innerHTML;
   ghost.style.width=rect.width+'px';
   document.body.appendChild(ghost);
   origEl.classList.add('board-dragging');
-
   boardPH=document.createElement('div'); boardPH.className='ph-board';
-
   const offX=cx-rect.left, offY=cy-rect.top;
   bdrag={boardId,origEl,ghost,offX,offY};
   ghost.style.left=(cx-offX)+'px'; ghost.style.top=(cy-offY)+'px';
-
   document.addEventListener('mousemove',onBoardMove);
   document.addEventListener('mouseup',  onBoardUp);
-  document.addEventListener('touchmove',onBoardTouchMove,{passive:false});
-  document.addEventListener('touchend', onBoardTouchEnd);
+  document.addEventListener('touchmove',onBoardTMove,{passive:false});
+  document.addEventListener('touchend', onBoardTEnd);
 }
 
+function onBoardMove(e){ if(!bdrag) return; moveBoardGhost(e.clientX,e.clientY); updateBoardPH(e.clientX); }
+function onBoardTMove(e){ e.preventDefault(); if(!bdrag) return; const t=e.touches[0]; moveBoardGhost(t.clientX,t.clientY); updateBoardPH(t.clientX); }
 function moveBoardGhost(cx,cy){ bdrag.ghost.style.left=(cx-bdrag.offX)+'px'; bdrag.ghost.style.top=(cy-bdrag.offY)+'px'; }
 
 function updateBoardPH(cx){
@@ -576,23 +536,16 @@ function updateBoardPH(cx){
   const endBtn=document.getElementById('add-board-end');
   const bEls=[...canvas.querySelectorAll('.board:not(.board-dragging)')];
   let ins=false;
-  for(const b of bEls){
-    const r=b.getBoundingClientRect();
-    if(cx<r.left+r.width/2){ if(boardPH.nextSibling!==b||boardPH.parentNode!==canvas) canvas.insertBefore(boardPH,b); ins=true; break; }
-  }
+  for(const b of bEls){ const r=b.getBoundingClientRect(); if(cx<r.left+r.width/2){ if(boardPH.nextSibling!==b||boardPH.parentNode!==canvas) canvas.insertBefore(boardPH,b); ins=true; break; } }
   if(!ins) canvas.insertBefore(boardPH,endBtn);
 }
-
-function onBoardMove(e){ if(!bdrag) return; moveBoardGhost(e.clientX,e.clientY); updateBoardPH(e.clientX); }
-function onBoardTouchMove(e){ e.preventDefault(); if(!bdrag) return; const t=e.touches[0]; moveBoardGhost(t.clientX,t.clientY); updateBoardPH(t.clientX); }
 
 function finishBoardDrop(){
   if(!bdrag) return;
   bdrag.ghost.remove();
   bdrag.origEl.classList.remove('board-dragging');
   if(boardPH?.parentNode){
-    const canvas=document.getElementById('canvas');
-    const items=[...canvas.children];
+    const items=[...document.getElementById('canvas').children];
     const phIdx=items.indexOf(boardPH);
     let newIdx=0;
     for(let i=0;i<phIdx;i++){ const el=items[i]; if(el.classList.contains('board')&&el.dataset.bid!==bdrag.boardId) newIdx++; }
@@ -604,21 +557,13 @@ function finishBoardDrop(){
 }
 
 function onBoardUp(){ document.removeEventListener('mousemove',onBoardMove); document.removeEventListener('mouseup',onBoardUp); finishBoardDrop(); }
-function onBoardTouchEnd(){ document.removeEventListener('touchmove',onBoardTouchMove); document.removeEventListener('touchend',onBoardTouchEnd); finishBoardDrop(); }
+function onBoardTEnd(){ document.removeEventListener('touchmove',onBoardTMove); document.removeEventListener('touchend',onBoardTEnd); finishBoardDrop(); }
 
 // ══════════════════════════════════════════════════
 //  CRUD
 // ══════════════════════════════════════════════════
-function removeCard(boardId,cardId){
-  const b=boards.find(b=>b.id===boardId); if(!b) return;
-  b.cards=b.cards.filter(c=>c.id!==cardId);
-  render(); schedSave();
-}
-function deleteBoard(id){
-  if(id==='backlog') return;
-  boards=boards.filter(b=>b.id!==id);
-  render(); schedSave();
-}
+function removeCard(boardId,cardId){ const b=boards.find(b=>b.id===boardId); if(!b) return; b.cards=b.cards.filter(c=>c.id!==cardId); render(); schedSave(); }
+function deleteBoard(id){ if(id==='backlog') return; boards=boards.filter(b=>b.id!==id); render(); schedSave(); }
 
 // ══════════════════════════════════════════════════
 //  CARD MODAL
@@ -685,9 +630,8 @@ function openCtx(e,boardId){
   document.getElementById('ctx-rename').style.display=isB?'none':'flex';
   document.getElementById('ctx-del').style.display=isB?'none':'flex';
   const m=document.getElementById('ctx');
-  const x=Math.min(e.clientX,window.innerWidth-180);
-  const y=Math.min(e.clientY,window.innerHeight-160);
-  m.style.left=x+'px'; m.style.top=y+'px';
+  m.style.left=Math.min(e.clientX,window.innerWidth-180)+'px';
+  m.style.top=Math.min(e.clientY,window.innerHeight-160)+'px';
   m.classList.add('open');
 }
 function closeCtx(){ document.getElementById('ctx').classList.remove('open'); }
@@ -702,14 +646,22 @@ document.getElementById('btn-save').addEventListener('click',saveSheets);
 //  INIT
 // ══════════════════════════════════════════════════
 (async function init(){
+  // 1. carrega cache local imediatamente (UI rápida)
+  const cache = localStorage.getItem(LS_DATA);
+  if(cache){ try{ boards=JSON.parse(cache); }catch(e){ boards=mkBoards(); } }
+  else { boards=mkBoards(); }
+  render();
+
+  // 2. tenta sincronizar com Sheets (leitura via API pública)
   setSt('saving','Conectando...');
-  const cache=localStorage.getItem(LS_DATA);
-  if(cache){ try{ boards=JSON.parse(cache); render(); }catch(e){ boards=mkBoards(); render(); } }
-  else { boards=mkBoards(); render(); }
-  // always try to load fresh from sheets
-  const loaded=await loadSheets();
-  if(loaded) render();
-  else if(!cache){ saveSheets(); }
+  const loaded = await loadSheets();
+  if(loaded){ render(); }
+  else if(!cache){
+    // planilha vazia — salva estado inicial
+    saveSheets();
+  } else {
+    setSt('saved','Cache local');
+  }
 })();
 </script>
 </body>
